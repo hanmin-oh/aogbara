@@ -1,0 +1,707 @@
+/* ===================================
+   AOG Main - Clean & Modern
+=================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'NanumSquareNeo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Wrapper & Container */
+.aog-wrapper {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Header */
+.aog-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+.aog-header.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.aog-header.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+}
+
+.aog-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.aog-brand-logo {
+    height: auto;
+    width: 180px;
+    max-height: 50px;
+    filter: brightness(0) invert(1);
+    /* 금색 → 검은색으로 변환 후 → 흰색으로 반전 */
+    /* 나중에 이미지 편집으로 여백 제거 예정 */
+}
+
+.aog-nav {
+    display: flex;
+    gap: 16px;
+}
+
+.aog-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 10px;
+    opacity: 0.9;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.aog-nav a.active {
+    opacity: 1;
+    font-weight: 700;
+}
+
+/* Hamburger Button */
+.aog-hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.aog-hamburger-btn span {
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Menu */
+.aog-mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2000;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.aog-mobile-menu.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.aog-mobile-menu-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.aog-mobile-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgba(17, 17, 17, 0.98);
+    backdrop-filter: blur(10px);
+    padding: 80px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.aog-mobile-menu.open .aog-mobile-nav {
+    transform: translateX(0);
+}
+
+.aog-mobile-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.aog-mobile-nav a:hover,
+.aog-mobile-nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+}
+
+.aog-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    line-height: 1;
+}
+
+.aog-container {
+    width: 100%;
+    height: 400vh;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Section Base */
+.section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+/* ===================================
+   Section 1: Hero
+=================================== */
+.section-hero {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-img.active {
+    opacity: 0.5;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+}
+
+.section-hero .section-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-logo {
+    margin-bottom: 30px;
+}
+
+.hero-logo img {
+    width: 70px;
+    height: auto;
+}
+
+.hero-title {
+    font-size: clamp(50px, 10vw, 120px);
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.hero-permit {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    opacity: 0.95;
+    animation: bounce 2s infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.scroll-hint::after {
+    content: '›››';
+    font-size: 20px;
+    line-height: 0.5;
+    transform: rotate(90deg);
+    opacity: 0.9;
+}
+
+@keyframes bounce {
+    0%, 100% { 
+        transform: translate(-50%, 0); 
+    }
+    50% { 
+        transform: translate(-50%, 10px); 
+    }
+}
+
+/* ===================================
+   Section 2: Philosophy
+=================================== */
+.section-philosophy {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+.section-philosophy .section-content {
+    position: relative;
+    z-index: 2;
+}
+
+.philosophy-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.philosophy-main-title {
+    font-size: clamp(36px, 5vw, 50px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+}
+
+.philosophy-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.philosophy-card {
+    text-align: left;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.philosophy-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+}
+
+.philosophy-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+}
+
+.philosophy-title {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.philosophy-text {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* ===================================
+   Section 3: Services
+=================================== */
+.section-services {
+    background: #fafafa;
+    color: #111;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 30px 25px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    text-align: left;
+    cursor: pointer;
+    min-height: 200px;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: #111;
+    background: #111;
+    color: #fff;
+}
+
+.service-card:hover .service-number {
+    color: #fff;
+}
+
+.service-card:hover p {
+    color: #ccc;
+}
+
+.service-number {
+    font-size: 14px;
+    font-weight: 700;
+    opacity: 0.3;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+}
+
+
+/* ===================================
+   Section 4: Contact
+=================================== */
+.section-contact {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.section-contact h2 {
+    font-size: clamp(40px, 6vw, 70px);
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.contact-text {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #aaa;
+    margin-bottom: 50px;
+}
+
+.contact-button {
+    padding: 20px 60px;
+    background: #fff;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-button:hover {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 0 0 2px #fff inset;
+}
+
+.contact-footer {
+    margin-top: 60px;
+    font-size: 12px;
+    opacity: 0.4;
+    letter-spacing: 0.2em;
+}
+
+/* ===================================
+   Section Indicators
+=================================== */
+.section-indicators {
+    position: fixed;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.indicator {
+    width: 8px;
+    height: 8px;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator.active {
+    background: #fff;
+    transform: scale(1.5);
+}
+
+/* Dark indicators for light sections */
+.section-indicators.dark .indicator {
+    background: rgba(0,0,0,0.3);
+}
+
+.section-indicators.dark .indicator.active {
+    background: #111;
+}
+
+/* ===================================
+   Modal
+=================================== */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* ===================================
+   Responsive
+=================================== */
+@media (max-width: 1024px) {
+    .aog-header {
+        padding: 0 20px;
+    }
+
+    .aog-nav {
+        gap: 12px;
+    }
+
+    .aog-nav a {
+        font-size: 13px;
+        padding: 6px 8px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .stats-grid {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aog-header {
+        padding: 0 15px;
+        height: 60px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .aog-hamburger-btn {
+        display: flex;
+    }
+
+    .aog-brand-logo {
+        width: 140px;
+        max-height: 40px;
+    }
+
+    .section {
+        padding: 30px 20px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .service-card {
+        padding: 20px 15px;
+        min-height: 150px;
+    }
+
+    .service-card h3 {
+        font-size: 16px;
+    }
+
+    .service-card p {
+        font-size: 13px;
+    }
+
+    .vision-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .vision-card {
+        max-width: 100%;
+    }
+
+    .philosophy-header {
+        margin-bottom: 25px;
+    }
+
+    .philosophy-main-title {
+        font-size: 28px;
+    }
+
+    .philosophy-subtitle {
+        font-size: 12px;
+    }
+
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .philosophy-card {
+        padding: 18px;
+    }
+
+    .philosophy-number {
+        font-size: 11px;
+    }
+
+    .philosophy-title {
+        font-size: 15px;
+    }
+
+    .philosophy-text {
+        font-size: 12px;
+    }
+
+    .section-indicators {
+        right: 20px;
+        gap: 10px;
+    }
+
+    .indicator {
+        width: 6px;
+        height: 6px;
+    }
+}

@@ -1,0 +1,49 @@
+/* =========================
+   PAGE CONTENT LAYOUT
+========================= */
+
+/* 일반 페이지 (AogMain 제외)용 컨테이너 스타일 */
+.content {
+    height: 100%;
+    padding-top: var(--header-height); /* 헤더 높이만큼 여백 */
+    padding-bottom: var(--footer-height); /* 푸터 높이만큼 여백 */
+    box-sizing: border-box;
+    overflow-y: auto; /* 내부 스크롤 허용 */
+}
+
+/* TOP / MIDDLE = 1:1 */
+.top {
+    flex: 1;
+    padding: 16px;
+    background: #f6f6f6;
+
+    min-height: 0;
+    overflow: hidden;
+}
+
+.middle {
+    flex: 1;
+    display: flex;
+
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* LEFT / RIGHT = 1:1 */
+.left,
+.right {
+    flex: 1;
+    padding: 16px;
+
+    min-height: 0;
+    overflow: hidden;
+}
+
+.left {
+    background: #fafafa;
+}
+
+.right {
+    background: #fff;
+}
+

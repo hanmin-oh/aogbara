@@ -1,0 +1,57 @@
+/* 전체 */
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 메뉴 */
+.menu {
+  height: 56px;
+  background: #222;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* footer */
+.footer {
+  height: 40px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 메인 콘텐츠 */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP 영역 */
+.top {
+  height: 120px;
+  background: #f0f0f0;
+  padding: 16px;
+}
+
+/* LEFT + RIGHT */
+.middle {
+  flex: 1;
+  display: flex;
+}
+
+.left {
+  width: 220px;
+  background: #fafafa;
+  padding: 16px;
+}
+
+.right {
+  flex: 1;
+  background: #fff;
+  padding: 16px;
+}
