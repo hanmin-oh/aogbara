@@ -25,7 +25,7 @@ export default function App() {
     }
 
     const handleEnterTeamBara = () => {
-        window.location.href = 'https://teambara.com'
+        window.location.href = 'https://teambara.vercel.app/'
     }
 
     if (activeTeam === 'home') {

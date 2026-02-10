@@ -134,13 +134,13 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     onClick={onGoMain}
                     style={{ cursor: 'pointer' }}
                 >
-                    <img src="/logo/header_1.png" alt="AOG" className="aog-brand-logo" />
+                    <img src="/logo/logo-header.svg" alt="AOG" className="aog-brand-logo" />
                 </div>
 
                 <nav className="aog-nav desktop-nav">
                     <NavLink to="/" end>회사소개</NavLink>
                     <NavLink to="/about">사업영역</NavLink>
-                    <NavLink to="/portfolio">주요실적</NavLink>
+                    <NavLink to="/portfolio">경호실적</NavLink>
                     <NavLink to="/contact">상담</NavLink>
                 </nav>
 
@@ -167,7 +167,7 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     </button>
                     <NavLink to="/" end onClick={() => setIsMenuOpen(false)}>회사소개</NavLink>
                     <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>사업영역</NavLink>
-                    <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)}>주요실적</NavLink>
+                    <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)}>경호실적</NavLink>
                     <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>상담</NavLink>
                 </nav>
             </div>

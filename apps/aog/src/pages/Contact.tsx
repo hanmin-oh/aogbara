@@ -6,7 +6,7 @@ export default function Contact() {
             {/* Hero Section */}
             <section className="contact-hero">
                 <div className="contact-hero-content">
-                    <h1 className="contact-hero-title">CONTACT US</h1>
+                    <p className="contact-hero-subtitle">상담 및 견적 문의는 언제든 편하게 연락 주세요.</p>
                 </div>
             </section>
 

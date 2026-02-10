@@ -18,12 +18,14 @@
     width: 100%;
     height: 25vh;
     min-height: 200px;
+    padding-top: var(--header-height);
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     position: relative;
+    box-sizing: border-box;
 }
 
 .contact-hero::before {
@@ -49,9 +51,16 @@
 }
 
 .contact-hero-title {
-    font-size: clamp(40px, 6vw, 80px);
+    font-size: clamp(32px, 4.5vw, 64px);
     font-weight: 900;
     letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.contact-hero-subtitle {
+    margin-top: 14px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.78);
 }
 
 /* ===================================

@@ -18,12 +18,14 @@
     width: 100%;
     height: 25vh;
     min-height: 200px;
+    padding-top: var(--header-height);
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     position: relative;
+    box-sizing: border-box;
 }
 
 .about-hero::before {
@@ -49,9 +51,16 @@
 }
 
 .about-hero-title {
-    font-size: clamp(40px, 6vw, 80px);
+    font-size: clamp(32px, 4.5vw, 64px);
     font-weight: 900;
     letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+.about-hero-subtitle {
+    margin-top: 14px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.78);
 }
 
 /* ===================================
@@ -74,28 +83,28 @@
 .about-services-grid {
     display: flex;
     flex-wrap: nowrap;
-    gap: 8px;
+    gap: 16px;
     margin-bottom: 20px;
     justify-content: space-between;
     width: 100%;
     overflow: visible;
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .about-service-card {
     background: #fff;
-    border: 2px solid #eee;
-    border-radius: 8px;
-    padding: 14px 8px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px 12px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    min-height: 112px;
-    max-height: 112px;
-    flex: 0 0 calc((100% - 40px) / 6);
+    min-height: 140px;
+    max-height: 140px;
+    flex: 0 0 calc((100% - 96px) / 7);
     min-width: 0;
-    max-width: calc((100% - 40px) / 6);
+    max-width: calc((100% - 96px) / 7);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,7 +123,7 @@
 }
 
 .about-service-title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 800;
     margin-bottom: 8px;
     line-height: 1.25;
@@ -294,15 +303,15 @@
     }
 
     .about-services-grid {
-        gap: 8px;
+        gap: 10px;
     }
 
     .about-service-card {
-        padding: 12px 8px;
-        min-height: 98px;
-        max-height: 98px;
-        flex: 0 0 calc((100% - 40px) / 6);
-        max-width: calc((100% - 40px) / 6);
+        padding: 16px 10px;
+        min-height: 120px;
+        max-height: 120px;
+        flex: 0 0 calc((100% - 60px) / 7);
+        max-width: calc((100% - 60px) / 7);
     }
 
     .about-service-title {

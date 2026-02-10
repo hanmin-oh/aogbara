@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+    import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import '../styles/portfolio.css'
 
@@ -178,7 +178,7 @@ export default function Portfolio() {
             {/* Hero Section */}
             <section className="portfolio-hero">
                 <div className="portfolio-hero-content">
-                    <h1 className="portfolio-hero-title">PORTFOLIO</h1>
+                    <p className="portfolio-hero-subtitle">실제 수행한 경호 사례와 운영 실적을 소개합니다.</p>
                 </div>
             </section>
 
@@ -187,10 +187,9 @@ export default function Portfolio() {
                 <div className="portfolio-container">
                     {/* Category Filter */}
                     <div className="portfolio-categories">
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
-                            <h2 className="portfolio-section-title" style={{ marginBottom: 0 }}>포트폴리오 카테고리</h2>
-                            {isAdminMode && (
-                                <div style={{ display: 'flex', gap: '10px' }}>
+                        {isAdminMode && (
+                            <div className="portfolio-category-header">
+                                <div className="portfolio-category-actions">
                                     <button className="admin-btn" onClick={handleAdd}>
                                         ➕ 추가
                                     </button>
@@ -207,8 +206,8 @@ export default function Portfolio() {
                                         />
                                     </label>
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        )}
                         <div className="category-buttons">
                             {categories.map((cat) => (
                                 <button
@@ -236,13 +235,19 @@ export default function Portfolio() {
                                         <div className="admin-controls">
                                             <button 
                                                 className="edit-btn"
-                                                onClick={() => handleEdit(item)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    handleEdit(item)
+                                                }}
                                             >
                                                 ✏️ 수정
                                             </button>
                                             <button 
                                                 className="delete-btn"
-                                                onClick={() => handleDelete(item.id)}
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    handleDelete(item.id)
+                                                }}
                                             >
                                                 🗑️
                                             </button>

@@ -91,7 +91,7 @@ export default function About() {
             {/* Hero Section */}
             <section className="about-hero">
                 <div className="about-hero-content">
-                    <h1 className="about-hero-title">Our Services</h1>
+                    <p className="about-hero-subtitle">A.O.G의 전문 경호 서비스를 한눈에 확인하세요.</p>
                 </div>
             </section>
 

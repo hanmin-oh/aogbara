@@ -79,8 +79,11 @@ export default function Home({ onEnterTeamAog, onEnterTeamBara }: HomeProps) {
                     <CrossFade images={INTRO_IMAGES} interval={3800} />
                     <div className="introPaneOverlay">
                         <div className="introLogoButton introLogoStatic">
-                            <img src="/logo/logo_1.png" alt="AOG Company" className="introCenterLogo" />
-                            <p className="introDesc">Professional Security & Protection</p>
+                            <div className="introAogTitle">TEAM A.O.G</div>
+                            <p className="introAogDesc">
+                                Always On Guard, 언제나 곁에서<br />
+                                당신의 안전을 지키는 경호팀
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -99,12 +102,14 @@ export default function Home({ onEnterTeamAog, onEnterTeamBara }: HomeProps) {
                     aria-label="Go to TeamBARA"
                 >
                     <div className="xfade">
-                        <img src="/bara/teamBara" alt="TEAM BARA" className="xfadeImg on" />
+                        <img src="/teamBara" alt="TEAM BARA" className="xfadeImg on" />
                     </div>
                     <div className="introPaneOverlay">
                         <div className="introLink introLinkButton">
-                            <span className="introWordmark">TEAM BARA</span>
-                            <p className="introDesc">Event Planning & Production</p>
+                            <span className="introAogTitle">TEAM BARA</span>
+                            <p className="introAogDesc">
+                                바라컴퍼니 소속 5명이 재미있는 <br/>이야기를 만들어가는 채널
+                            </p>
                         </div>
                     </div>
                 </div>

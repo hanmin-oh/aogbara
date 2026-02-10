@@ -24,7 +24,7 @@ body {
 }
 
 :root {
-    --header-height: 60px;
+    --header-height: 96px;
     --footer-height: 40px;
 }
 
@@ -44,23 +44,26 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     color: #fff;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
 
-    padding: 0 20px;
+    padding: 0 28px;
     box-sizing: border-box;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
 }
 .brand {
     display: flex;
     align-items: center;
     gap: 10px;
+    grid-column: 1;
+    justify-self: start;
 }
 
 .brandLogo {
     height: auto;
-    width: 180px;
-    max-height: 50px;
+    width: 220px;
+    max-height: 64px;
     filter: brightness(0) invert(1);
     /* 금색 → 검은색으로 변환 후 → 흰색으로 반전 */
     /* 나중에 이미지 편집으로 여백 제거 예정 */
@@ -72,16 +75,18 @@ body {
 
 .nav {
     display: flex;
-    gap: 16px;
+    gap: 48px;
+    grid-column: 2;
+    justify-self: center;
 }
 
 .nav a {
     color: #fff;
     text-decoration: none;
-    padding: 8px 10px;
+    padding: 12px 14px;
     opacity: 0.9;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 17px;
+    font-weight: 700;
 }
 
 .nav a.active {
@@ -98,6 +103,8 @@ body {
     border: none;
     cursor: pointer;
     padding: 5px;
+    grid-column: 3;
+    justify-self: end;
 }
 
 .hamburger-btn span {
@@ -183,12 +190,21 @@ body {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+    :root {
+        --header-height: 84px;
+    }
+
     .desktop-nav {
         display: none;
     }
 
     .hamburger-btn {
         display: flex;
+    }
+
+    .brandLogo {
+        width: 190px;
+        max-height: 56px;
     }
 }
 
