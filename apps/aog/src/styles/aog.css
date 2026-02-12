@@ -468,31 +468,59 @@
 
 
 /* ===================================
-   Section 4: Contact
+   Section 4: Split — Contact + BARA
 =================================== */
-.section-contact {
-    background: #1a1a1a;
-    color: #fff;
+.section-split {
+    display: flex;
+    padding: 0 !important;
+    overflow: hidden;
+    align-items: stretch;
+    gap: 0;
 }
 
-.section-contact h2 {
-    font-size: clamp(40px, 6vw, 70px);
+.split-pane {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.split-inner {
+    padding: 60px 48px;
+    text-align: center;
+    max-width: 540px;
+    width: 100%;
+}
+
+/* — Left: Contact — */
+.split-contact {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.split-contact h2 {
+    font-size: clamp(32px, 4vw, 56px);
     font-weight: 900;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .contact-text {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.8;
     color: #aaa;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .contact-button {
-    padding: 20px 60px;
+    padding: 18px 52px;
     background: #fff;
     color: #000;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     border: none;
     cursor: pointer;
@@ -506,10 +534,98 @@
 }
 
 .contact-footer {
-    margin-top: 60px;
-    font-size: 12px;
+    margin-top: 48px;
+    font-size: 11px;
     opacity: 0.4;
     letter-spacing: 0.2em;
+}
+
+/* — Right: BARA — */
+.split-bara {
+    background: #0d0d0d;
+    color: #fff;
+}
+
+.split-bara-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at 60% 30%, rgba(201, 169, 110, 0.1), transparent 60%),
+        radial-gradient(ellipse at 30% 80%, rgba(201, 169, 110, 0.06), transparent 50%);
+    pointer-events: none;
+}
+
+.split-bara .split-inner {
+    position: relative;
+    z-index: 2;
+}
+
+.bara-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(201, 169, 110, 0.7);
+    margin-bottom: 18px;
+}
+
+.bara-title {
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 24px;
+}
+
+.bara-accent {
+    background: linear-gradient(135deg, #c9a96e, #e8e0d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bara-desc {
+    font-size: clamp(13px, 1.6vw, 16px);
+    line-height: 1.9;
+    color: #999;
+    margin-bottom: 36px;
+}
+
+.bara-desc strong {
+    color: #c9a96e;
+    font-weight: 700;
+}
+
+.bara-cta {
+    display: inline-block;
+    padding: 15px 44px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    color: #0d0d0d;
+    background: linear-gradient(135deg, #c9a96e, #e8e0d0);
+    border-radius: 2px;
+    transition: all 0.35s ease;
+}
+
+.bara-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(201, 169, 110, 0.25);
+}
+
+/* — Header BARA link — */
+.nav-bara {
+    color: #c9a96e !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    position: relative;
+}
+
+.nav-bara::after {
+    content: '↗';
+    font-size: 10px;
+    margin-left: 3px;
+    opacity: 0.6;
 }
 
 /* ===================================
@@ -677,36 +793,37 @@
     }
 
     .philosophy-header {
-        margin-bottom: 25px;
+        margin-bottom: 24px;
     }
 
     .philosophy-main-title {
-        font-size: 28px;
-    }
-
-    .philosophy-subtitle {
-        font-size: 12px;
+        font-size: 26px;
     }
 
     .philosophy-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 18px;
+        max-width: 320px;
+        margin: 0 auto;
     }
 
     .philosophy-card {
-        padding: 18px;
+        padding: 18px 20px;
     }
 
     .philosophy-number {
         font-size: 11px;
+        margin-bottom: 8px;
     }
 
     .philosophy-title {
         font-size: 15px;
+        margin-bottom: 10px;
     }
 
     .philosophy-text {
-        font-size: 12px;
+        font-size: 13px;
+        line-height: 1.6;
     }
 
     .section-indicators {
@@ -717,5 +834,53 @@
     .indicator {
         width: 6px;
         height: 6px;
+    }
+
+    /* Split section: stack vertically on mobile */
+    .section-split {
+        flex-direction: column;
+    }
+
+    .split-pane {
+        min-height: 50vh;
+        height: 50vh;
+        flex: none;
+    }
+
+    .split-inner {
+        padding: 32px 24px;
+    }
+
+    .split-contact h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+
+    .contact-text {
+        font-size: 14px;
+        margin-bottom: 28px;
+    }
+
+    .contact-button {
+        padding: 14px 40px;
+        font-size: 14px;
+    }
+
+    .contact-footer {
+        margin-top: 28px;
+    }
+
+    .bara-title {
+        font-size: 24px;
+    }
+
+    .bara-desc {
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+
+    .bara-cta {
+        padding: 13px 34px;
+        font-size: 12px;
     }
 }

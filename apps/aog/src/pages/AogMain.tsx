@@ -41,11 +41,7 @@ function CrossFade({ images, interval = 4000 }: CrossFadeProps) {
 
 const SECTION_COUNT = 4
 
-interface AogMainProps {
-    onGoMain: () => void
-}
-
-export default function AogMain({ onGoMain }: AogMainProps) {
+export default function AogMain() {
     const navigate = useNavigate()
     const [showContact, setShowContact] = useState(false)
     const [currentSection, setCurrentSection] = useState(0)
@@ -128,12 +124,7 @@ export default function AogMain({ onGoMain }: AogMainProps) {
         <div className="aog-wrapper" ref={containerRef}>
             {/* Header - Only visible on first section */}
             <header className={`aog-header ${currentSection === 0 ? 'visible' : 'hidden'}`}>
-                <div
-                    className="aog-brand"
-                    role="button"
-                    onClick={onGoMain}
-                    style={{ cursor: 'pointer' }}
-                >
+                <div className="aog-brand">
                     <img src="/logo/logo-header.svg" alt="AOG" className="aog-brand-logo" />
                 </div>
 
@@ -142,6 +133,9 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     <NavLink to="/about">사업영역</NavLink>
                     <NavLink to="/portfolio">경호실적</NavLink>
                     <NavLink to="/contact">상담</NavLink>
+                    <a href="https://teambara.vercel.app/" target="_blank" rel="noopener noreferrer" className="nav-bara">
+                        TEAM BARA
+                    </a>
                 </nav>
 
                 <button 
@@ -169,6 +163,9 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>사업영역</NavLink>
                     <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)}>경호실적</NavLink>
                     <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>상담</NavLink>
+                    <a href="https://teambara.vercel.app/" target="_blank" rel="noopener noreferrer" className="nav-bara mobile-bara" onClick={() => setIsMenuOpen(false)}>
+                        TEAM BARA
+                    </a>
                 </nav>
             </div>
 
@@ -200,48 +197,35 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     <div className="section-content">
                         <div className="philosophy-header">
                             <h2 className="philosophy-main-title">Our Philosophy</h2>
-                            <p className="philosophy-subtitle">우리의 철학</p>
                         </div>
                         
                         <div className="philosophy-grid">
-                            {/* Philosophy 1 */}
                             <div className="philosophy-card">
-                                <div className="philosophy-number">No.1</div>
-                                <h3 className="philosophy-title">Professional Security,<br/>Trusted Protection</h3>
+                                <div className="philosophy-number">01</div>
+                                <h3 className="philosophy-title">Trusted Protection</h3>
                                 <p className="philosophy-text">
-                                    고객의 안전과 신뢰를 최우선으로 생각합니다.
-                                    전문적인 경호 서비스로 고객의 소중한 순간을 안전하게 지킵니다.
+                                    고객의 안전과 신뢰를 최우선으로,<br/>소중한 순간을 지킵니다.
                                 </p>
                             </div>
-                            
-                            {/* Philosophy 2 */}
                             <div className="philosophy-card">
-                                <div className="philosophy-number">No.2</div>
-                                <h3 className="philosophy-title">Experience Meets<br/>Excellence</h3>
+                                <div className="philosophy-number">02</div>
+                                <h3 className="philosophy-title">Expert Team</h3>
                                 <p className="philosophy-text">
-                                    10년 이상 경력의 전문가들로 구성된 팀.
-                                    신변, 행사, 의전 경호, 시설 보안경비, 의전 드라이버, 발렛 서비스 등
-                                    다양한 분야에서 최상의 서비스를 제공합니다.
+                                    10년 이상 경력의 전문가로 구성,<br/>최상의 서비스를 제공합니다.
                                 </p>
                             </div>
-                            
-                            {/* Philosophy 3 */}
                             <div className="philosophy-card">
-                                <div className="philosophy-number">No.3</div>
-                                <h3 className="philosophy-title">Systematic &<br/>Reliable Service</h3>
+                                <div className="philosophy-number">03</div>
+                                <h3 className="philosophy-title">Reliable System</h3>
                                 <p className="philosophy-text">
-                                    사전 위험 분석부터 현장 대응까지, 철저한 준비와 체계적인 운영으로
-                                    예상치 못한 상황에도 즉각적으로 대응합니다.
+                                    사전 분석부터 현장 대응까지,<br/>체계적으로 운영합니다.
                                 </p>
                             </div>
-                            
-                            {/* Philosophy 4 */}
                             <div className="philosophy-card">
-                                <div className="philosophy-number">No.4</div>
-                                <h3 className="philosophy-title">Building<br/>Long-term Trust</h3>
+                                <div className="philosophy-number">04</div>
+                                <h3 className="philosophy-title">Long-term Trust</h3>
                                 <p className="philosophy-text">
-                                    혁신적이고 역동적인 접근으로 새로운 기준을 제시하며,
-                                    고객과 함께 성장하는 신뢰할 수 있는 파트너가 되겠습니다.
+                                    고객과 함께 성장하는<br/>신뢰할 수 있는 파트너.
                                 </p>
                             </div>
                         </div>
@@ -295,23 +279,51 @@ export default function AogMain({ onGoMain }: AogMainProps) {
                     </div>
                 </section>
 
-                {/* Section 4: Contact */}
-                <section className="section section-contact">
-                    <div className="section-content">
-                        <h2>Contact Us</h2>
-                        <p className="contact-text">
-                            전문 경호 서비스 상담이 필요하신가요?<br/>
-                            언제든 문의해 주세요.
-                        </p>
-                        <button
-                            className="contact-button"
-                            onClick={() => setShowContact(true)}
-                        >
-                            문의하기
-                        </button>
-                        <p className="contact-footer">
-                            Professional Security & Protection Since 2024
-                        </p>
+                {/* Section 4: Contact (left) + BARA (right) */}
+                <section className="section section-split">
+                    {/* 왼쪽: Contact */}
+                    <div className="split-pane split-contact">
+                        <div className="split-inner">
+                            <h2>Contact Us</h2>
+                            <p className="contact-text">
+                                전문 경호 서비스 상담이 필요하신가요?<br/>
+                                언제든 문의해 주세요.
+                            </p>
+                            <button
+                                className="contact-button"
+                                onClick={() => setShowContact(true)}
+                            >
+                                문의하기
+                            </button>
+                            <p className="contact-footer">
+                                Professional Security & Protection Since 2024
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* 오른쪽: BARA */}
+                    <div className="split-pane split-bara">
+                        <div className="split-bara-bg" />
+                        <div className="split-inner">
+                            <p className="bara-kicker">행사의 안전, 그리고 무대</p>
+                            <h2 className="bara-title">
+                                경호에서 공연까지<br/>
+                                <span className="bara-accent">하나의 팀</span>
+                            </h2>
+                            <p className="bara-desc">
+                                퍼포먼스 전문 크루<br/>
+                                <strong>B.A.R.A</strong>와 함께<br/>
+                                특별한 무대를 만듭니다.
+                            </p>
+                            <a
+                                href="https://teambara.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bara-cta"
+                            >
+                                B.A.R.A →
+                            </a>
+                        </div>
                     </div>
                 </section>
             </div>

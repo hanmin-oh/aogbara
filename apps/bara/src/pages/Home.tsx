@@ -58,12 +58,22 @@ export default function Home() {
 
       {/* ═══ HERO ═══ */}
       <section className="b-hero">
-        <div className="b-hero__bg" />
+        <div className="b-hero__media" aria-hidden="true">
+          <div className="b-hero__media-image" />
+          <div className="b-hero__media-video">
+            <iframe
+              src="https://www.youtube.com/embed/zmRbm13_kWk?autoplay=1&mute=1&controls=0&loop=1&playlist=zmRbm13_kWk&modestbranding=1&playsinline=1&rel=0"
+              title="BARA Hero Video"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <div className="b-hero__media-overlay" />
+        </div>
         <div className="b-hero__content">
           <p className="b-hero__label">B.A.R.A</p>
           <h1>Born Again as<br />Remarkable Art</h1>
           <p className="b-hero__sub">"특별한 예술로 다시 태어나다"</p>
-          <NavLink to="/" className="b-hero__cta">BARA CREW</NavLink>
         </div>
         <div className="b-hero__fade" />
       </section>

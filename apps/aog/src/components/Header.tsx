@@ -1,30 +1,24 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-interface HeaderProps {
-    onGoMain: () => void
-}
-
-export default function Header({ onGoMain }: HeaderProps) {
+export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
         <>
             <header className="menu">
-                <div
-                    className="brand"
-                    role="button"
-                    onClick={onGoMain}
-                    style={{ cursor: 'pointer' }}
-                >
+                <NavLink to="/" className="brand">
                     <img src="/logo/logo-header.svg" alt="AOG Company Logo" className="brandLogo" />
-                </div>
+                </NavLink>
 
                 <nav className="nav desktop-nav">
                     <NavLink to="/" end>회사소개</NavLink>
                     <NavLink to="/about">사업영역</NavLink>
                     <NavLink to="/portfolio">경호실적</NavLink>
                     <NavLink to="/contact">상담</NavLink>
+                    <a href="https://teambara.vercel.app/" target="_blank" rel="noopener noreferrer" className="nav-bara">
+                        TEAM BARA
+                    </a>
                 </nav>
 
                 <button 
@@ -52,6 +46,9 @@ export default function Header({ onGoMain }: HeaderProps) {
                     <NavLink to="/about" onClick={() => setIsMenuOpen(false)}>사업영역</NavLink>
                     <NavLink to="/portfolio" onClick={() => setIsMenuOpen(false)}>경호실적</NavLink>
                     <NavLink to="/contact" onClick={() => setIsMenuOpen(false)}>상담</NavLink>
+                    <a href="https://teambara.vercel.app/" target="_blank" rel="noopener noreferrer" className="nav-bara mobile-bara" onClick={() => setIsMenuOpen(false)}>
+                        TEAM BARA
+                    </a>
                 </nav>
             </div>
         </>

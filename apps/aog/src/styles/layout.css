@@ -94,6 +94,20 @@ body {
     font-weight: 700;
 }
 
+.nav .nav-bara,
+.mobile-nav .nav-bara {
+    color: #c9a96e !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+}
+
+.nav .nav-bara::after {
+    content: '↗';
+    font-size: 10px;
+    margin-left: 3px;
+    opacity: 0.6;
+}
+
 /* Hamburger Button */
 .hamburger-btn {
     display: none;
