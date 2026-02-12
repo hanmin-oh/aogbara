@@ -3,6 +3,7 @@ import '../styles/contact.css'
 export default function Contact() {
     return (
         <div className="contact-page">
+            <h1 className="sr-only">상담</h1>
             {/* Hero Section */}
             <section className="contact-hero">
                 <div className="contact-hero-content">

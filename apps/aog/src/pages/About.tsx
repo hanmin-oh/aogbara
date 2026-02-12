@@ -88,6 +88,7 @@ export default function About() {
 
     return (
         <div className="about-page">
+            <h1 className="sr-only">사업영역</h1>
             {/* Hero Section */}
             <section className="about-hero">
                 <div className="about-hero-content">

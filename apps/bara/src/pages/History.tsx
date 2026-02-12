@@ -20,6 +20,7 @@ const history = [
 export default function History() {
   return (
     <div className="b-page">
+      <h1 className="sr-only">History</h1>
       <div className="b-page__head">
         <p className="b-label">History</p>
       </div>

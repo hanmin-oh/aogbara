@@ -20,6 +20,7 @@ const programs = [
 export default function Program() {
   return (
     <div className="b-page">
+      <h1 className="sr-only">Program</h1>
       <div className="b-page__head">
         <p className="b-label">Program</p>
       </div>

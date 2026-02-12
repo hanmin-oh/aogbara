@@ -1,6 +1,7 @@
 export default function Contact() {
   return (
     <div className="b-page">
+      <h1 className="sr-only">Contact</h1>
       <div className="b-page__head">
         <p className="b-label">Contact</p>
       </div>

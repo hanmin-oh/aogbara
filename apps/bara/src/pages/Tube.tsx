@@ -8,6 +8,7 @@ const videos = [
 export default function Tube() {
   return (
     <div className="b-page">
+      <h1 className="sr-only">Tube</h1>
       <div className="b-page__head">
         <p className="b-label">Tube</p>
         <a

@@ -175,6 +175,7 @@ export default function Portfolio() {
 
     return (
         <div className="portfolio-page">
+            <h1 className="sr-only">경호실적</h1>
             {/* Hero Section */}
             <section className="portfolio-hero">
                 <div className="portfolio-hero-content">
