@@ -303,15 +303,17 @@
     }
 
     .about-services-grid {
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .about-service-card {
-        padding: 16px 10px;
+        padding: 16px 12px;
         min-height: 120px;
-        max-height: 120px;
-        flex: 0 0 calc((100% - 60px) / 7);
-        max-width: calc((100% - 60px) / 7);
+        max-height: none;
+        flex: none;
+        max-width: none;
     }
 
     .about-service-title {
