@@ -281,15 +281,16 @@
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   justify-items: center;
-  gap: clamp(32px, 4.5vw, 56px);
-  --crew-card-width: 320px;
-  --crew-card-height: 400px;
-  padding: 0 clamp(40px, 7vw, 120px);
-  padding-bottom: calc(var(--crew-card-height) * 0.66);
+  align-items: start;
+  gap: clamp(16px, 2.5vw, 32px);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 80px);
+  padding-bottom: 120px;
 }
 
 .b-crew-card--offset {
-  transform: translateY(calc(var(--crew-card-height) * 0.66));
+  transform: translateY(25%);
 }
 
 .b-crew-card--last {
@@ -300,26 +301,30 @@
   position: relative;
   background: transparent;
   border: none;
-  overflow: hidden;
-  width: var(--crew-card-width);
+  overflow: visible;
+  width: 100%;
   display: block;
   text-decoration: none;
 }
 
 .b-crew-card__visual {
   position: relative;
-  width: var(--crew-card-width);
-  height: var(--crew-card-height);
+  width: 100%;
+  height: auto;
   overflow: hidden;
   background: transparent;
+  border-radius: 4px;
 }
 
 .b-crew-card__visual img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: contain;
-  background: #0000;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.b-crew-card:hover .b-crew-card__visual img {
+  transform: scale(1.08);
 }
 
 
