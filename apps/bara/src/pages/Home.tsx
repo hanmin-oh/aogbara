@@ -5,38 +5,10 @@
 
 import { NavLink } from 'react-router-dom'
 
-const members = [
-  {
-    name: 'RIN',
-    role: 'Performance Director',
-    desc: '무대 위 움직임의 흐름을 설계하고, 퍼포먼스 전체의 방향성을 이끕니다.',
-    quote: '"몸이 기억하는 장면을 만듭니다."',
-  },
-  {
-    name: 'JAY',
-    role: 'Visual Artist',
-    desc: '미디어 아트와 공간 연출로 관객의 시선을 사로잡는 시각 경험을 만듭니다.',
-    quote: '"빛으로 서사를 그립니다."',
-  },
-  {
-    name: 'SOO',
-    role: 'Sound Designer',
-    desc: '현장의 온도를 결정하는 사운드를 설계하고 라이브 앰비언트를 구현합니다.',
-    quote: '"소리가 공간을 완성합니다."',
-  },
-  {
-    name: 'MIN',
-    role: 'Creative Producer',
-    desc: '브랜드 서사를 무대 언어로 번역하고, 프로젝트 전체를 기획합니다.',
-    quote: '"이야기를 무대 위에 세웁니다."',
-  },
-  {
-    name: 'LEE',
-    role: 'Choreographer',
-    desc: '안무와 라이브 세션을 통해 무대에 생동감과 리듬을 불어넣습니다.',
-    quote: '"리듬이 곧 언어입니다."',
-  },
-]
+const crewImages = Array.from({ length: 7 }, (_, i) => ({
+  src: `/profile/crew_${i + 1}.png`,
+  alt: `BARA crew ${i + 1}`,
+}))
 
 const stats = [
   { number: '12만+', label: '누적 관람객', sub: '2020 ~ 2023' },
@@ -99,25 +71,20 @@ export default function Home() {
       <section className="b-section b-section--crew">
         <div className="b-section__head">
           <span className="b-section__label">BARA CREW</span>
-          <p className="b-section__desc">
-            다섯 명의 아티스트가 하나의 무대를 만듭니다.<br />
-            기획부터 연출까지, B.A.R.A는 팀으로 창조합니다.
-          </p>
         </div>
         <div className="b-crew-list">
-          {members.map((m, i) => (
-            <article key={m.name} className={`b-crew-card b-crew-card--${i + 1}`}>
+          {crewImages.map((image, i) => (
+            <a
+              key={`crew-frame-${i + 1}`}
+              className={`b-crew-card${i % 2 === 1 ? ' b-crew-card--offset' : ''}${i === 6 ? ' b-crew-card--last' : ''}`}
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="b-crew-card__visual">
-                <span className="b-crew-card__initial">{m.name}</span>
+                <img src={image.src} alt={image.alt} loading="lazy" />
               </div>
-              <div className="b-crew-card__info">
-                <span className="b-crew-card__idx">{'0' + (i + 1)}</span>
-                <p className="b-crew-card__role">{m.role}</p>
-                <h3>{m.name}</h3>
-                <p className="b-crew-card__desc">{m.desc}</p>
-                <p className="b-crew-card__quote">{m.quote}</p>
-              </div>
-            </article>
+            </a>
           ))}
         </div>
       </section>

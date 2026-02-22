@@ -41,15 +41,19 @@ function CrossFade({ images, interval = 4000 }: CrossFadeProps) {
 
 const SECTION_COUNT = 4
 
-export default function AogMain() {
+interface AogMainProps {
+    onOpenContact?: () => void
+}
+
+export default function AogMain({ onOpenContact }: AogMainProps) {
     const navigate = useNavigate()
-    const [showContact, setShowContact] = useState(false)
     const [currentSection, setCurrentSection] = useState(0)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const containerRef = useRef<HTMLDivElement>(null)
     const isScrolling = useRef(false)
     const touchStart = useRef(0)
     const touchEnd = useRef(0)
+    const handleOpenContact = onOpenContact ?? (() => {})
 
     const handleServiceClick = (category: string) => {
         navigate(`/portfolio?category=${category}`)
@@ -182,9 +186,9 @@ export default function AogMain() {
                         <div className="hero-logo">
                             <img src="/logo/aog.png" alt="AOG" />
                         </div>
-                        <h1 className="hero-title">
-                            A.O.G<br/>COMPANY
-                        </h1>
+                        <div className="hero-title" aria-label="A.O.G Company">
+                            <img src="/main.png" alt="A.O.G Company" />
+                        </div>
                         <p className="hero-subtitle">Professional Security & Protection</p>
                         <p className="hero-permit">서울지방경찰청 허가 제 4915호</p>
                     </div>
@@ -196,34 +200,30 @@ export default function AogMain() {
                     <CrossFade images={IMAGES} />
                     <div className="section-content">
                         <div className="philosophy-header">
-                            <h2 className="philosophy-main-title">Our Philosophy</h2>
+                            <h2 className="philosophy-main-title">WHO WE ARE</h2>
                         </div>
                         
                         <div className="philosophy-grid">
                             <div className="philosophy-card">
-                                <div className="philosophy-number">01</div>
                                 <h3 className="philosophy-title">Trusted Protection</h3>
                                 <p className="philosophy-text">
                                     고객의 안전과 신뢰를 최우선으로,<br/>소중한 순간을 지킵니다.
                                 </p>
                             </div>
                             <div className="philosophy-card">
-                                <div className="philosophy-number">02</div>
-                                <h3 className="philosophy-title">Expert Team</h3>
+                                <h3 className="philosophy-title">Elite Security Specialists</h3>
                                 <p className="philosophy-text">
                                     10년 이상 경력의 전문가로 구성,<br/>최상의 서비스를 제공합니다.
                                 </p>
                             </div>
                             <div className="philosophy-card">
-                                <div className="philosophy-number">03</div>
-                                <h3 className="philosophy-title">Reliable System</h3>
+                                <h3 className="philosophy-title">Comprehensive Security Protocols</h3>
                                 <p className="philosophy-text">
                                     사전 분석부터 현장 대응까지,<br/>체계적으로 운영합니다.
                                 </p>
                             </div>
                             <div className="philosophy-card">
-                                <div className="philosophy-number">04</div>
-                                <h3 className="philosophy-title">Long-term Trust</h3>
+                                <h3 className="philosophy-title">Long-Term Partnership</h3>
                                 <p className="philosophy-text">
                                     고객과 함께 성장하는<br/>신뢰할 수 있는 파트너.
                                 </p>
@@ -240,38 +240,32 @@ export default function AogMain() {
                             onClick={() => navigate('/portfolio')}
                             style={{ cursor: 'pointer' }}
                         >
-                            <h2>Our Services</h2>
+                            <h2>WHAT WE DO</h2>
                             <p>전문 경호 서비스</p>
                         </div>
                         
                         <div className="services-grid">
                             <div className="service-card" onClick={() => handleServiceClick('personal')}>
-                                <div className="service-number">01</div>
                                 <h3>신변 경호</h3>
                                 <p>VIP 및 주요 인사 신변 보호</p>
                             </div>
                             <div className="service-card" onClick={() => handleServiceClick('event')}>
-                                <div className="service-number">02</div>
                                 <h3>행사 경호</h3>
                                 <p>각종 행사 및 이벤트 보안</p>
                             </div>
                             <div className="service-card" onClick={() => handleServiceClick('protocol')}>
-                                <div className="service-number">03</div>
                                 <h3>의전 경호</h3>
                                 <p>공식 일정 수행 및 동선 관리</p>
                             </div>
                             <div className="service-card" onClick={() => handleServiceClick('facility')}>
-                                <div className="service-number">04</div>
                                 <h3>시설 보안경비</h3>
                                 <p>건물 및 시설 보안 관리</p>
                             </div>
                             <div className="service-card" onClick={() => handleServiceClick('driver')}>
-                                <div className="service-number">05</div>
                                 <h3>의전 드라이버</h3>
                                 <p>안전 운행 및 이동 지원</p>
                             </div>
                             <div className="service-card" onClick={() => handleServiceClick('valet')}>
-                                <div className="service-number">06</div>
                                 <h3>발렛 서비스</h3>
                                 <p>행사 및 시설 차량 관리</p>
                             </div>
@@ -291,7 +285,7 @@ export default function AogMain() {
                             </p>
                             <button
                                 className="contact-button"
-                                onClick={() => setShowContact(true)}
+                                onClick={handleOpenContact}
                             >
                                 문의하기
                             </button>
@@ -340,25 +334,6 @@ export default function AogMain() {
                 ))}
             </div>
 
-            {/* Contact Modal */}
-            {showContact && (
-                <div className="modal-backdrop" onClick={() => setShowContact(false)}>
-                    <div className="modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>Contact A.O.G</h2>
-                            <button
-                                className="modal-close"
-                                onClick={() => setShowContact(false)}
-                            >
-                                ✕
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <p>여기에 카카오톡 오픈채팅 QR, 연락처, 주소 등을 배치합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            )}
         </div>
     )
 }
