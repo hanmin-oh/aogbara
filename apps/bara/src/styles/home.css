@@ -327,7 +327,53 @@
   transform: scale(1.08);
 }
 
+/* Crew Info (Name & Desc) */
+.b-crew-card__info {
+  position: absolute;
+  top: 24px;
+  width: 180px;
+  z-index: 2;
+  pointer-events: none;
+}
 
+.b-crew-name {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--b-cream);
+  text-transform: uppercase;
+}
+
+.b-crew-desc {
+  margin: 0;
+  font-size: 12px;
+  color: var(--b-sub);
+  letter-spacing: 0.04em;
+}
+
+/* Left Column (Odd) -> Text on Left */
+.b-crew-card:nth-child(odd) .b-crew-card__info {
+  right: 100%;
+  padding-right: 24px;
+  text-align: right;
+}
+
+/* Right Column (Even) -> Text on Right */
+.b-crew-card:nth-child(even) .b-crew-card__info {
+  left: 100%;
+  padding-left: 24px;
+  text-align: left;
+}
+
+/* Last Item (7th, Odd) -> Force Text on Left */
+.b-crew-card--last .b-crew-card__info {
+  left: auto;
+  right: 100%;
+  padding-left: 0;
+  padding-right: 24px;
+  text-align: right;
+}
 
 
 /* ═══════════════════
@@ -563,10 +609,26 @@
 @media (max-width: 768px) {
   .b-crew-list {
     grid-template-columns: 1fr;
+    gap: 48px; /* 모바일에서는 간격을 좀 더 띄움 */
+  }
+
+  .b-crew-card--offset {
+    transform: none; /* 모바일에서는 오프셋 제거 */
   }
 
   .b-crew-card__visual {
     aspect-ratio: 1 / 1.2;
+  }
+
+  /* 모바일에서는 텍스트를 이미지 아래로 */
+  .b-crew-card__info,
+  .b-crew-card:nth-child(odd) .b-crew-card__info,
+  .b-crew-card:nth-child(even) .b-crew-card__info,
+  .b-crew-card--last .b-crew-card__info {
+    position: static;
+    width: 100%;
+    padding: 16px 0 0 0;
+    text-align: left;
   }
 
   .b-hero { height: 48vh; min-height: 320px; }

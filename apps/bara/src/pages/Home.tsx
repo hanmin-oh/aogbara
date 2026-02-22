@@ -5,10 +5,53 @@
 
 import { NavLink } from 'react-router-dom'
 
-const crewImages = Array.from({ length: 7 }, (_, i) => ({
-  src: `/profile/crew_${i + 1}.png`,
-  alt: `BARA crew ${i + 1}`,
-}))
+// ═══════════════════════════════════════
+// CREW DATA (여기서 이름과 설명을 수정하세요)
+// ═══════════════════════════════════════
+const crewImages = [
+  {
+    src: '/profile/crew_1.png',
+    alt: 'BARA crew 1',
+    name: 'CREW MEMBER 1',
+    desc: 'Performance Artist / Director',
+  },
+  {
+    src: '/profile/crew_2.png',
+    alt: 'BARA crew 2',
+    name: 'CREW MEMBER 2',
+    desc: 'Main Dancer / Choreographer',
+  },
+  {
+    src: '/profile/crew_3.png',
+    alt: 'BARA crew 3',
+    name: 'CREW MEMBER 3',
+    desc: 'Visual Artist / Designer',
+  },
+  {
+    src: '/profile/crew_4.png',
+    alt: 'BARA crew 4',
+    name: 'CREW MEMBER 4',
+    desc: 'Performance Artist',
+  },
+  {
+    src: '/profile/crew_5.png',
+    alt: 'BARA crew 5',
+    name: 'CREW MEMBER 5',
+    desc: 'Performance Artist',
+  },
+  {
+    src: '/profile/crew_6.png',
+    alt: 'BARA crew 6',
+    name: 'CREW MEMBER 6',
+    desc: 'Performance Artist',
+  },
+  {
+    src: '/profile/crew_7.png',
+    alt: 'BARA crew 7',
+    name: 'CREW MEMBER 7',
+    desc: 'Performance Artist',
+  },
+]
 
 const stats = [
   { number: '12만+', label: '누적 관람객', sub: '2020 ~ 2023' },
@@ -76,13 +119,17 @@ export default function Home() {
           {crewImages.map((image, i) => (
             <a
               key={`crew-frame-${i + 1}`}
-              className={`b-crew-card${i % 2 === 1 ? ' b-crew-card--offset' : ''}${i === 6 ? ' b-crew-card--last' : ''}`}
+              className={`b-crew-card${i % 2 === 1 ? ' b-crew-card--offset' : ''}${i === crewImages.length - 1 ? ' b-crew-card--last' : ''}`}
               href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <div className="b-crew-card__visual">
                 <img src={image.src} alt={image.alt} loading="lazy" />
+              </div>
+              <div className="b-crew-card__info">
+                <h3 className="b-crew-name">{image.name}</h3>
+                <p className="b-crew-desc">{image.desc}</p>
               </div>
             </a>
           ))}
