@@ -44,7 +44,7 @@ export default function Contact() {
                         <h2 className="contact-section-title">Location</h2>
                         <div className="map-container">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.5989990234587!2d126.92308391531682!3d37.55682297980043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98e1f5e6f5c1%3A0x4b4e4b4e4b4e4b4e!2z7ZmN64yA7J6F6rWs7Jet!5e0!3m2!1sko!2skr!4v1234567890123"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.292305542718!2d126.9197931153118!3d37.55523037980003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c98cfa2b9bb25%3A0x6b8d96205775f042!2z7ISc7Jq47Yq567OE7IucIOuniO2PrOq1rCDtmY3snbXroZwgMy0xMQ!5e0!3m2!1sko!2skr!4v1700000000000!5m2!1sko!2skr"
                                 width="100%"
                                 height="450"
                                 style={{ border: 0 }}
@@ -55,7 +55,7 @@ export default function Contact() {
                             />
                         </div>
                         <div className="map-info">
-                            <p><strong>지하철:</strong> 2호선, 공항철도, 경의중앙선 홍대입구역</p>
+                            <p><strong>지하철:</strong> 2호선, 공항철도, 경의중앙선 합정역 및 홍대입구역</p>
                             <p><strong>주차:</strong> 인근 공영주차장 이용 가능</p>
                         </div>
                     </div>

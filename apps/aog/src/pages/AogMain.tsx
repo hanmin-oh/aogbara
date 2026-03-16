@@ -287,19 +287,6 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
                                 >
                                     문의하기
                                 </button>
-                                <div className="contact-location">
-                                    <p className="contact-address">서울시 마포구 홍익로 3-11</p>
-                                    <div className="contact-map">
-                                        <iframe
-                                            src="https://maps.google.com/maps?q=서울시 마포구 홍익로 3-11&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                                            style={{ border: 0 }}
-                                            allowFullScreen={false}
-                                            loading="lazy"
-                                            referrerPolicy="no-referrer-when-downgrade"
-                                            title="AOG Location"
-                                        ></iframe>
-                                    </div>
-                                </div>
                                 <p className="contact-footer">
                                     Professional Security & Protection Since 2024
                                 </p>
