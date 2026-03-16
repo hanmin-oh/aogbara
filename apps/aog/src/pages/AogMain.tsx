@@ -62,9 +62,9 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
     useEffect(() => {
         const handleWheel = (e: WheelEvent) => {
             e.preventDefault()
-            
+
             if (isScrolling.current) return
-            
+
             const delta = e.deltaY
             if (Math.abs(delta) < 10) return
 
@@ -129,7 +129,7 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
             {/* Header - Only visible on first section */}
             <header className={`aog-header ${currentSection === 0 ? 'visible' : 'hidden'}`}>
                 <div className="aog-brand">
-                    <img src="/logo/logo-header.svg" alt="AOG" className="aog-brand-logo" />
+                    <img src="/logo.png" alt="AOG" className="aog-brand-logo" />
                 </div>
 
                 <nav className="aog-nav desktop-nav">
@@ -183,9 +183,6 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
                 <section className="section section-hero">
                     <CrossFade images={IMAGES} />
                     <div className="section-content">
-                        <div className="hero-logo">
-                            <img src="/logo/aog.png" alt="AOG" />
-                        </div>
                         <div className="hero-title" aria-label="A.O.G Company">
                             <img src="/main.png" alt="A.O.G Company" />
                         </div>
@@ -273,52 +270,72 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
                     </div>
                 </section>
 
-                {/* Section 4: Contact (left) + BARA (right) */}
-                <section className="section section-split">
-                    {/* 왼쪽: Contact */}
-                    <div className="split-pane split-contact">
-                        <div className="split-inner">
-                            <h2>Contact Us</h2>
-                            <p className="contact-text">
-                                전문 경호 서비스 상담이 필요하신가요?<br/>
-                                언제든 문의해 주세요.
-                            </p>
-                            <button
-                                className="contact-button"
-                                onClick={handleOpenContact}
-                            >
-                                문의하기
-                            </button>
-                            <p className="contact-footer">
-                                Professional Security & Protection Since 2024
-                            </p>
+                {/* Section 4: Contact (left) + BARA (right) & Footer */}
+                <section className="section section-final">
+                    <div className="section-split">
+                        {/* 왼쪽: Contact */}
+                        <div className="split-pane split-contact">
+                            <div className="split-inner">
+                                <h2>Contact Us</h2>
+                                <p className="contact-text">
+                                    전문 경호 서비스 상담이 필요하신가요?<br/>
+                                    언제든 문의해 주세요.
+                                </p>
+                                <button
+                                    className="contact-button"
+                                    onClick={handleOpenContact}
+                                >
+                                    문의하기
+                                </button>
+                                <div className="contact-location">
+                                    <p className="contact-address">서울시 마포구 홍익로 3-11</p>
+                                    <div className="contact-map">
+                                        <iframe
+                                            src="https://maps.google.com/maps?q=서울시 마포구 홍익로 3-11&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                            style={{ border: 0 }}
+                                            allowFullScreen={false}
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                            title="AOG Location"
+                                        ></iframe>
+                                    </div>
+                                </div>
+                                <p className="contact-footer">
+                                    Professional Security & Protection Since 2024
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* 오른쪽: BARA */}
-                    <div className="split-pane split-bara">
-                        <div className="split-bara-bg" />
-                        <div className="split-inner">
-                            <p className="bara-kicker">행사의 안전, 그리고 무대</p>
-                            <h2 className="bara-title">
-                                경호에서 공연까지<br/>
-                                <span className="bara-accent">하나의 팀</span>
-                            </h2>
-                            <p className="bara-desc">
-                                퍼포먼스 전문 크루<br/>
-                                <strong>B.A.R.A</strong>와 함께<br/>
-                                특별한 무대를 만듭니다.
-                            </p>
-                            <a
-                                href="https://teambara.vercel.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bara-cta"
-                            >
-                                B.A.R.A →
-                            </a>
+                        {/* 오른쪽: BARA */}
+                        <div className="split-pane split-bara">
+                            <div className="split-bara-bg" />
+                            <div className="split-inner">
+                                <p className="bara-kicker">행사의 안전, 그리고 무대</p>
+                                <h2 className="bara-title">
+                                    경호에서 공연까지<br/>
+                                    <span className="bara-accent">하나의 팀</span>
+                                </h2>
+                                <p className="bara-desc">
+                                    퍼포먼스 전문 크루<br/>
+                                    <strong>B.A.R.A</strong>와 함께<br/>
+                                    특별한 무대를 만듭니다.
+                                </p>
+                                <a
+                                    href="https://teambara.vercel.app/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="bara-cta"
+                                >
+                                    B.A.R.A →
+                                </a>
+                            </div>
                         </div>
                     </div>
+                    
+                    <footer className="aog-footer">
+                        <p className="verse-text">"Commit to the LORD whatever you do, and he will establish your plans."</p>
+                        <p className="verse-ref">- Proverbs 16:3</p>
+                    </footer>
                 </section>
             </div>
 

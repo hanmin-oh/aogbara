@@ -1,4 +1,4 @@
-    import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import '../styles/portfolio.css'
 
@@ -8,36 +8,106 @@ interface PortfolioItem {
     id: number
     category: Category
     title: string
-    image: string
+    images: string[]
 }
 
 // 포트폴리오 데이터 (실제 이미지와 제목으로 나중에 대체)
 const portfolioData: PortfolioItem[] = [
     // 신변경호
-    { id: 1, category: 'personal', title: 'VIP 인사 경호 서비스', image: '/securities/left1.png' },
-    { id: 2, category: 'personal', title: '기업 임원 신변 보호', image: '/securities/left2.png' },
-    { id: 3, category: 'personal', title: '해외 인사 방한 경호', image: '/securities/right1.png' },
+    { 
+        id: 1, 
+        category: 'personal', 
+        title: 'VIP 인사 경호 서비스', 
+        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
+    },
+    { 
+        id: 2, 
+        category: 'personal', 
+        title: '기업 임원 신변 보호', 
+        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
+    },
+    { 
+        id: 3, 
+        category: 'personal', 
+        title: '해외 인사 방한 경호', 
+        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
+    },
     
     // 행사경호
-    { id: 4, category: 'event', title: '대규모 컨퍼런스 보안', image: '/securities/right2.png' },
-    { id: 5, category: 'event', title: '기업 행사 경호 서비스', image: '/securities/left1.png' },
-    { id: 6, category: 'event', title: '공연장 보안 관리', image: '/securities/left2.png' },
+    { 
+        id: 4, 
+        category: 'event', 
+        title: '대규모 컨퍼런스 보안', 
+        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
+    },
+    { 
+        id: 5, 
+        category: 'event', 
+        title: '기업 행사 경호 서비스', 
+        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
+    },
+    { 
+        id: 6, 
+        category: 'event', 
+        title: '공연장 보안 관리', 
+        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
+    },
     
     // 의전경호
-    { id: 7, category: 'protocol', title: '정부 인사 의전 경호', image: '/securities/right1.png' },
-    { id: 8, category: 'protocol', title: '외교 행사 의전 서비스', image: '/securities/right2.png' },
+    { 
+        id: 7, 
+        category: 'protocol', 
+        title: '정부 인사 의전 경호', 
+        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
+    },
+    { 
+        id: 8, 
+        category: 'protocol', 
+        title: '외교 행사 의전 서비스', 
+        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
+    },
     
     // 시설 보안경비
-    { id: 9, category: 'facility', title: '기업 본사 보안 관리', image: '/securities/left1.png' },
-    { id: 10, category: 'facility', title: '빌딩 통합 보안 시스템', image: '/securities/left2.png' },
+    { 
+        id: 9, 
+        category: 'facility', 
+        title: '기업 본사 보안 관리', 
+        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
+    },
+    { 
+        id: 10, 
+        category: 'facility', 
+        title: '빌딩 통합 보안 시스템', 
+        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
+    },
     
     // 의전 드라이버
-    { id: 11, category: 'driver', title: 'VIP 의전 운행 서비스', image: '/securities/right1.png' },
-    { id: 12, category: 'driver', title: '공항 픽업/드롭 서비스', image: '/securities/right2.png' },
+    { 
+        id: 11, 
+        category: 'driver', 
+        title: 'VIP 의전 운행 서비스', 
+        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
+    },
+    { 
+        id: 12, 
+        category: 'driver', 
+        title: '공항 픽업/드롭 서비스', 
+        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
+    },
     
     // 발렛서비스
-    { id: 13, category: 'valet', title: '프리미엄 발렛 서비스', image: '/securities/left1.png' },
-    { id: 14, category: 'valet', title: '행사장 발렛 운영', image: '/securities/left2.png' },
+    { 
+        id: 13, 
+        category: 'valet', 
+        title: '프리미엄 발렛 서비스', 
+        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
+    },
+    { 
+        id: 14, 
+        category: 'valet', 
+        title: '행사장 발렛 운영', 
+        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
+    },
 ]
 
 const categories = [
@@ -52,21 +122,15 @@ const categories = [
 
 export default function Portfolio() {
     const [searchParams] = useSearchParams()
-    const [selectedCategory, setSelectedCategory] = useState<Category>('all')
     const [isAdminMode, setIsAdminMode] = useState(false)
     const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(portfolioData)
     const [editingItem, setEditingItem] = useState<PortfolioItem | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isAddMode, setIsAddMode] = useState(false)
-    const [lightboxImage, setLightboxImage] = useState<string | null>(null)
+    const [detailItem, setDetailItem] = useState<PortfolioItem | null>(null)
     const fileInputRef = useRef<HTMLInputElement>(null)
 
     useEffect(() => {
-        const category = searchParams.get('category') as Category
-        if (category && categories.find(cat => cat.id === category)) {
-            setSelectedCategory(category)
-        }
-        
         // URL에서 admin 모드 확인
         const admin = searchParams.get('admin')
         if (admin === 'true') {
@@ -93,9 +157,9 @@ export default function Portfolio() {
     const handleAdd = () => {
         const newItem: PortfolioItem = {
             id: Math.max(...portfolioItems.map(i => i.id)) + 1,
-            category: selectedCategory === 'all' ? 'personal' : selectedCategory,
+            category: 'personal',
             title: '새 포트폴리오',
-            image: '/securities/left1.png'
+            images: ['/securities/left1.png']
         }
         setEditingItem(newItem)
         setIsAddMode(true)
@@ -129,16 +193,35 @@ export default function Portfolio() {
     }
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0]
-        if (!file) return
+        const files = e.target.files
+        if (!files || files.length === 0) return
 
-        const reader = new FileReader()
-        reader.onloadend = () => {
-            if (editingItem) {
-                setEditingItem({ ...editingItem, image: reader.result as string })
+        // 여러 파일 처리
+        const newImages: string[] = []
+        let processedCount = 0
+
+        Array.from(files).forEach(file => {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                newImages.push(reader.result as string)
+                processedCount++
+                
+                if (processedCount === files.length && editingItem) {
+                    // 기존 이미지에 추가하거나 교체 (여기서는 추가로 구현)
+                    setEditingItem(prev => prev ? {
+                        ...prev,
+                        images: [...prev.images, ...newImages]
+                    } : null)
+                }
             }
-        }
-        reader.readAsDataURL(file)
+            reader.readAsDataURL(file)
+        })
+    }
+
+    const removeImage = (index: number) => {
+        if (!editingItem) return
+        const newImages = editingItem.images.filter((_, i) => i !== index)
+        setEditingItem({ ...editingItem, images: newImages })
     }
 
     const handleExportJSON = () => {
@@ -169,10 +252,6 @@ export default function Portfolio() {
         reader.readAsText(file)
     }
 
-    const filteredItems = selectedCategory === 'all' 
-        ? portfolioItems 
-        : portfolioItems.filter(item => item.category === selectedCategory)
-
     return (
         <div className="portfolio-page">
             <h1 className="sr-only">경호실적</h1>
@@ -186,9 +265,9 @@ export default function Portfolio() {
             {/* Main Content */}
             <section className="portfolio-main">
                 <div className="portfolio-container">
-                    {/* Category Filter */}
-                    <div className="portfolio-categories">
-                        {isAdminMode && (
+                    {/* Admin Controls */}
+                    {isAdminMode && (
+                        <div className="portfolio-categories">
                             <div className="portfolio-category-header">
                                 <div className="portfolio-category-actions">
                                     <button className="admin-btn" onClick={handleAdd}>
@@ -208,30 +287,16 @@ export default function Portfolio() {
                                     </label>
                                 </div>
                             </div>
-                        )}
-                        <div className="category-buttons">
-                            {categories.map((cat) => (
-                                <button
-                                    key={cat.id}
-                                    className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-                                    onClick={() => setSelectedCategory(cat.id as Category)}
-                                >
-                                    {cat.name}
-                                </button>
-                            ))}
                         </div>
-                    </div>
+                    )}
 
                     {/* Portfolio Grid */}
                     <div className="portfolio-grid">
-                        {filteredItems.map((item) => (
-                            <div key={item.id} className="portfolio-card">
-                                <div 
-                                    className="portfolio-image"
-                                    onClick={() => !isAdminMode && setLightboxImage(item.image)}
-                                    style={{ cursor: isAdminMode ? 'default' : 'pointer' }}
-                                >
-                                    <img src={item.image} alt={item.title} />
+                        {portfolioItems.map((item) => (
+                            <div key={item.id} className="portfolio-card" onClick={() => !isAdminMode && setDetailItem(item)}>
+                                <div className="portfolio-image">
+                                    {/* 대표 이미지는 첫 번째 이미지 사용 */}
+                                    <img src={item.images[0]} alt={item.title} />
                                     {isAdminMode && (
                                         <div className="admin-controls">
                                             <button 
@@ -256,15 +321,18 @@ export default function Portfolio() {
                                     )}
                                 </div>
                                 <div className="portfolio-info">
+                                    <span className="portfolio-category-tag">
+                                        {categories.find(c => c.id === item.category)?.name}
+                                    </span>
                                     <h3 className="portfolio-title">{item.title}</h3>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    {filteredItems.length === 0 && (
+                    {portfolioItems.length === 0 && (
                         <div className="portfolio-empty">
-                            <p>해당 카테고리의 포트폴리오가 준비 중입니다.</p>
+                            <p>등록된 포트폴리오가 없습니다.</p>
                         </div>
                     )}
                 </div>
@@ -304,22 +372,33 @@ export default function Portfolio() {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label>이미지</label>
-                                <div className="image-upload">
-                                    <img src={editingItem.image} alt="Preview" className="preview-image" />
+                                <label>이미지 (여러 장 선택 가능)</label>
+                                <div className="image-upload-list">
+                                    {editingItem.images.map((img, idx) => (
+                                        <div key={idx} className="image-preview-item">
+                                            <img src={img} alt={`Preview ${idx}`} />
+                                            <button 
+                                                className="remove-image-btn"
+                                                onClick={() => removeImage(idx)}
+                                            >
+                                                ✕
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <button 
+                                        className="add-image-btn"
+                                        onClick={() => fileInputRef.current?.click()}
+                                    >
+                                        + 이미지 추가
+                                    </button>
                                     <input 
                                         type="file"
                                         ref={fileInputRef}
                                         accept="image/*"
+                                        multiple
                                         onChange={handleImageUpload}
                                         style={{ display: 'none' }}
                                     />
-                                    <button 
-                                        className="upload-btn"
-                                        onClick={() => fileInputRef.current?.click()}
-                                    >
-                                        📷 이미지 변경
-                                    </button>
                                 </div>
                             </div>
                             <div className="modal-actions">
@@ -335,20 +414,30 @@ export default function Portfolio() {
                 </div>
             )}
 
-            {/* Lightbox */}
-            {lightboxImage && (
-                <div className="lightbox" onClick={() => setLightboxImage(null)}>
-                    <button 
-                        className="lightbox-close"
-                        onClick={() => setLightboxImage(null)}
-                    >
-                        ✕
-                    </button>
-                    <img 
-                        src={lightboxImage} 
-                        alt="확대 이미지" 
-                        onClick={(e) => e.stopPropagation()}
-                    />
+            {/* Detail View Modal (Lightbox style) */}
+            {detailItem && (
+                <div className="detail-modal-backdrop" onClick={() => setDetailItem(null)}>
+                    <div className="detail-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="detail-header">
+                            <h2 className="detail-title">{detailItem.title}</h2>
+                            <button 
+                                className="detail-close"
+                                onClick={() => setDetailItem(null)}
+                            >
+                                ✕
+                            </button>
+                        </div>
+                        <div className="detail-content">
+                            {detailItem.images.map((img, idx) => (
+                                <img 
+                                    key={idx} 
+                                    src={img} 
+                                    alt={`${detailItem.title} - ${idx + 1}`} 
+                                    className="detail-image"
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             )}
         </div>

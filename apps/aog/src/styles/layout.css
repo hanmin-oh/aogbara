@@ -21,11 +21,13 @@ body {
     width: 100%;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 :root {
     --header-height: 96px;
-    --footer-height: 40px;
+    --footer-height: 100px;
 }
 
 /* =========================
@@ -243,37 +245,61 @@ body {
 
 .pageFrame {
     width: 100%;
-    height: 100vh; /* Header/Footer가 overlay이므로 전체 사용 */
+    flex: 1;
     position: relative;
-    /* overflow는 페이지별로 제어 */
+    overflow-y: auto; /* Allow scrolling within the page frame for other pages */
 }
 
 /* 페이지 전환 애니메이션 */
 .pageAnim {
-    height: 100%;
-    /* 애니메이션은 유지하되 transform 충돌 주의 (AogMain 등) */
+    /* height: 100%; Removed so it grows with content */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* =========================
-   FOOTER
+   FOOTER (Global)
 ========================= */
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.aog-global-footer {
+    /* Changed from fixed to normal flow */
     width: 100%;
-    height: var(--footer-height);
-    z-index: 1000;
-    background: rgba(17, 17, 17, 0.9);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #888;
-    font-size: 12px;
-
+    background: #0f172a; /* Dark blue background */
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto; /* Pushes footer to bottom if content is short */
 }
+
+.aog-global-footer .verse-text {
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.aog-global-footer .verse-ref {
+    font-size: clamp(12px, 1.2vw, 14px);
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #94a3b8; /* Slate blue-gray */
+    margin: 0;
+    text-transform: uppercase;
+}
+
 
 /* Kakao Open Chat placeholder (left border, bottom) */
 .kakao-quick-box {

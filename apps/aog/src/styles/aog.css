@@ -61,9 +61,9 @@
     height: auto;
     width: 220px;
     max-height: 64px;
-    filter: brightness(0) invert(1);
-    /* 금색 → 검은색으로 변환 후 → 흰색으로 반전 */
-    /* 나중에 이미지 편집으로 여백 제거 예정 */
+    background: transparent;
+    /* mix-blend-mode removed - relying on transparent png */
+    /* filter removed - relying on original image color */
 }
 
 .aog-nav {
@@ -198,7 +198,7 @@
 
 .aog-container {
     width: 100%;
-    height: 400vh;
+    height: 500vh;
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -271,46 +271,65 @@
 .section-hero .section-content {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 80px; /* Increased top padding */
+    max-width: none; /* Remove max-width constraint */
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.hero-logo {
-    margin-bottom: 30px;
-}
-
-.hero-logo img {
-    width: 70px;
-    height: auto;
-}
+/* hero-logo removed */
 
 .hero-title {
-    width: clamp(260px, 60vw, 720px);
-    margin: 0 auto 20px;
+    width: 95vw; /* Use viewport width directly */
+    max-width: 1600px; /* Allow much larger width */
+    margin: 0 auto 2vh; /* Reduced margin */
     text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    flex-shrink: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .hero-title img {
     width: 100%;
     height: auto;
+    max-height: 60vh; /* Reduced from 80vh to 60vh to prevent overlap */
+    object-fit: contain;
     display: block;
 }
 
 .hero-subtitle {
-    font-size: clamp(14px, 2vw, 20px);
+    font-size: clamp(8px, 1.2vw, 14px); /* Decreased font size by ~30% */
     font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 1.5vh;
     opacity: 0.9;
+    flex-shrink: 0;
 }
 
 .hero-permit {
-    font-size: 14px;
+    font-size: clamp(8px, 1vw, 11px); /* Decreased font size by ~30% */
     opacity: 0.6;
+    flex-shrink: 0;
+    margin-bottom: 40px; /* Added margin bottom to avoid overlap with scroll hint */
+}
+
+/* Small height screens (landscape mobile, etc) */
+@media (max-height: 600px) {
+    .hero-title { margin-bottom: 15px; }
+    .hero-subtitle { margin-bottom: 8px; }
+    .hero-title img { max-height: 50vh; }
 }
 
 .scroll-hint {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 11px;
@@ -322,6 +341,7 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    z-index: 10;
 }
 
 .scroll-hint::after {
@@ -484,14 +504,23 @@
 
 
 /* ===================================
-   Section 4: Split — Contact + BARA
+   Section 4: Split & Footer
 =================================== */
+.section-final {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    height: 100vh;
+    width: 100%;
+}
+
 .section-split {
     display: flex;
-    padding: 0 !important;
     overflow: hidden;
     align-items: stretch;
     gap: 0;
+    flex: 1; /* Takes up remaining space above footer */
+    width: 100%;
 }
 
 .split-pane {
@@ -501,11 +530,10 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
 }
 
 .split-inner {
-    padding: 60px 48px;
+    padding: 20px 48px; /* Reduced vertical padding */
     text-align: center;
     max-width: 540px;
     width: 100%;
@@ -522,18 +550,18 @@
 .split-contact h2 {
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 900;
-    margin-bottom: 24px;
+    margin-bottom: 20px; /* Reduced margin */
 }
 
 .contact-text {
     font-size: 16px;
     line-height: 1.8;
     color: #aaa;
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduced margin */
 }
 
 .contact-button {
-    padding: 18px 52px;
+    padding: 16px 48px; /* Adjusted padding */
     background: #fff;
     color: #000;
     font-size: 15px;
@@ -550,7 +578,7 @@
 }
 
 .contact-footer {
-    margin-top: 48px;
+    margin-top: 30px; /* Reduced margin */
     font-size: 11px;
     opacity: 0.4;
     letter-spacing: 0.2em;
@@ -582,14 +610,14 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(201, 169, 110, 0.7);
-    margin-bottom: 18px;
+    margin-bottom: 12px; /* Reduced margin */
 }
 
 .bara-title {
     font-size: clamp(26px, 3.5vw, 44px);
     font-weight: 900;
     line-height: 1.25;
-    margin-bottom: 24px;
+    margin-bottom: 16px; /* Reduced margin */
 }
 
 .bara-accent {
@@ -603,7 +631,7 @@
     font-size: clamp(13px, 1.6vw, 16px);
     line-height: 1.9;
     color: #999;
-    margin-bottom: 36px;
+    margin-bottom: 24px; /* Reduced margin */
 }
 
 .bara-desc strong {
@@ -613,7 +641,7 @@
 
 .bara-cta {
     display: inline-block;
-    padding: 15px 44px;
+    padding: 14px 40px; /* Adjusted padding */
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -627,6 +655,48 @@
 .bara-cta:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(201, 169, 110, 0.25);
+}
+
+/* — Footer — */
+.aog-footer {
+    background: #0f172a; /* Dark blue background */
+    color: #fff;
+    padding: 30px 20px; /* Reduced padding */
+    text-align: center;
+    width: 100%;
+    flex-shrink: 0; /* Prevents footer from shrinking */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Reduced gap */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.verse-text {
+    font-size: clamp(14px, 1.6vw, 18px); /* Slightly reduced font size */
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    color: #e2e8f0;
+    margin: 0;
+    max-width: 800px;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.verse-ref {
+    font-size: clamp(11px, 1vw, 13px); /* Slightly reduced font size */
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #94a3b8; /* Slate blue-gray */
+    margin: 0;
+    text-transform: uppercase;
 }
 
 /* — Header BARA link — */
@@ -726,8 +796,8 @@
     }
 
     .aog-brand-logo {
-        width: 140px;
-        max-height: 40px;
+        width: 190px;
+        max-height: 56px;
     }
 
     .section {
@@ -806,50 +876,68 @@
     }
 
     /* Split section: stack vertically on mobile */
+    .section-final {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
     .section-split {
         flex-direction: column;
+        flex: 1;
     }
 
     .split-pane {
-        min-height: 50vh;
-        height: 50vh;
+        min-height: auto;
+        height: auto;
         flex: none;
+        padding: 30px 0; /* Further reduced padding for mobile */
     }
 
     .split-inner {
-        padding: 32px 24px;
+        padding: 0 20px;
     }
 
     .split-contact h2 {
-        font-size: 28px;
-        margin-bottom: 16px;
+        font-size: 26px; /* Slightly smaller for mobile */
+        margin-bottom: 12px;
     }
 
     .contact-text {
-        font-size: 14px;
-        margin-bottom: 28px;
+        font-size: 13px; /* Slightly smaller for mobile */
+        margin-bottom: 20px;
     }
 
     .contact-button {
-        padding: 14px 40px;
-        font-size: 14px;
+        padding: 12px 36px;
+        font-size: 13px;
     }
 
     .contact-footer {
-        margin-top: 28px;
+        margin-top: 20px;
     }
 
     .bara-title {
-        font-size: 24px;
+        font-size: 22px; /* Slightly smaller for mobile */
+        margin-bottom: 12px;
     }
 
     .bara-desc {
-        font-size: 13px;
-        margin-bottom: 24px;
+        font-size: 12px; /* Slightly smaller for mobile */
+        margin-bottom: 20px;
     }
 
     .bara-cta {
-        padding: 13px 34px;
-        font-size: 12px;
+        padding: 12px 30px;
+        font-size: 11px;
+    }
+
+    .aog-footer {
+        padding: 20px 15px;
+    }
+
+    .verse-text {
+        font-size: 13px;
     }
 }

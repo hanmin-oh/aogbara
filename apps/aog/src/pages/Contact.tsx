@@ -22,22 +22,19 @@ export default function Contact() {
                             <div className="contact-info-card">
                                 <div className="info-icon">📍</div>
                                 <h3>Address</h3>
-                                <p>서울특별시 마포구 홍대입구역 인근</p>
-                                <p className="info-sub">상세 주소는 문의 시 안내드립니다</p>
+                                <p>서울시 마포구 홍익로 3-11</p>
                             </div>
 
                             <div className="contact-info-card">
                                 <div className="info-icon">📞</div>
                                 <h3>Phone</h3>
-                                <p>02-XXXX-XXXX</p>
-                                <p className="info-sub">평일 09:00 - 18:00</p>
+                                <p>010-3223-3632</p>
                             </div>
 
                             <div className="contact-info-card">
                                 <div className="info-icon">✉️</div>
                                 <h3>Email</h3>
-                                <p>contact@aog-company.com</p>
-                                <p className="info-sub">24시간 접수 가능</p>
+                                <p>companybara7@gmail.com</p>
                             </div>
                         </div>
                     </div>

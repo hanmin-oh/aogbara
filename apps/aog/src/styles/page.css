@@ -1,49 +1,59 @@
-/* =========================
-   PAGE CONTENT LAYOUT
-========================= */
+/* ===================================
+   General Page Settings
+=================================== */
 
-/* 일반 페이지 (AogMain 제외)용 컨테이너 스타일 */
-.content {
-    height: 100%;
-    padding-top: var(--header-height); /* 헤더 높이만큼 여백 */
-    padding-bottom: var(--footer-height); /* 푸터 높이만큼 여백 */
-    box-sizing: border-box;
-    overflow-y: auto; /* 내부 스크롤 허용 */
-}
-
-/* TOP / MIDDLE = 1:1 */
-.top {
-    flex: 1;
-    padding: 16px;
-    background: #f6f6f6;
-
-    min-height: 0;
-    overflow: hidden;
-}
-
-.middle {
-    flex: 1;
+.page-container {
+    width: 100%;
+    min-height: calc(100vh - var(--header-height)); /* Removed footer height calculation */
+    padding-top: var(--header-height);
+    background: #f8f8f8;
     display: flex;
-
-    min-height: 0;
-    overflow: hidden;
+    flex-direction: column;
 }
 
-/* LEFT / RIGHT = 1:1 */
-.left,
-.right {
+.page-content {
     flex: 1;
-    padding: 16px;
-
-    min-height: 0;
-    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
 }
 
-.left {
-    background: #fafafa;
+/* ===================================
+   Page Headers
+=================================== */
+.page-header {
+    text-align: center;
+    margin-bottom: 60px;
 }
 
-.right {
-    background: #fff;
+.page-title {
+    font-size: 42px;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 15px;
+    letter-spacing: -0.02em;
 }
 
+.page-subtitle {
+    font-size: 18px;
+    color: #666;
+    font-weight: 400;
+}
+
+/* ===================================
+   Responsive
+=================================== */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 40px 20px;
+    }
+
+    .page-title {
+        font-size: 32px;
+    }
+
+    .page-subtitle {
+        font-size: 15px;
+    }
+}

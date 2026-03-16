@@ -58,6 +58,8 @@ export default function App() {
                         <Route path="/portfolio" element={<Portfolio />} />
                         <Route path="/contact" element={<Contact />} />
                     </Routes>
+                    {/* 메인 화면이 아닐 때만 컨텐츠의 맨 끝에 Footer 렌더링 (스크롤해야 보임) */}
+                    {!isAogMain && <Footer />}
                 </div>
             </div>
 
@@ -98,8 +100,6 @@ export default function App() {
                     </div>
                 </div>
             )}
-
-            {!isAogMain && <Footer />}
         </div>
     )
 }

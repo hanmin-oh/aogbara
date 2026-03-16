@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/about.css'
 
 interface ServiceDetail {
@@ -79,11 +80,17 @@ const serviceDetails: Record<string, ServiceDetail> = {
 }
 
 export default function About() {
+    const navigate = useNavigate()
     const [selectedService, setSelectedService] = useState<string | null>('personal')
     const [showContact, setShowContact] = useState(false)
 
     const handleServiceClick = (serviceId: string) => {
         setSelectedService(serviceId)
+    }
+
+    const handlePortfolioClick = () => {
+        // 카테고리 필터 없이 전체 포트폴리오 페이지로 이동
+        navigate('/portfolio')
     }
 
     return (
@@ -168,20 +175,17 @@ export default function About() {
                                         ))}
                                     </ul>
                                 </div>
-
-                                <div className="about-service-detail-image">
-                                    <div className="about-service-image-placeholder">
-                                        <p>서비스 이미지</p>
-                                        <span>이미지는 추후 추가 예정</span>
-                                    </div>
-                                </div>
                             </div>
 
                             <div className="about-service-detail-footer">
-                                <p>상세한 상담이 필요하신가요?</p>
-                                <button className="about-service-contact-btn" onClick={() => setShowContact(true)}>
-                                    상담 문의하기
-                                </button>
+                                <div className="about-btn-group">
+                                    <button className="about-service-portfolio-btn" onClick={handlePortfolioClick}>
+                                        관련 실적 보기
+                                    </button>
+                                    <button className="about-service-contact-btn" onClick={() => setShowContact(true)}>
+                                        상담 문의하기
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}
@@ -202,7 +206,10 @@ export default function About() {
                             </button>
                         </div>
                         <div className="about-modal-body">
-                            <p>여기에 카카오톡 오픈채팅 QR, 연락처, 주소 등을 배치합니다.</p>
+                            <div className="about-qr-container">
+                                <img src="/qr.png" alt="KakaoTalk Open Chat QR" className="about-qr-image" />
+                                <p className="about-qr-desc">카카오톡 오픈채팅으로<br/>빠르게 상담받으세요.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
