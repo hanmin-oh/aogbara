@@ -13,101 +13,89 @@ interface PortfolioItem {
 
 // 포트폴리오 데이터 (실제 이미지와 제목으로 나중에 대체)
 const portfolioData: PortfolioItem[] = [
-    // 신변경호
     { 
         id: 1, 
-        category: 'personal', 
-        title: 'VIP 인사 경호 서비스', 
-        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
+        category: 'driver', 
+        title: '주차관리,차량통제', 
+        images: [
+            '/photo/driver/1653561301786.jpg',
+            '/photo/driver/1653561288874-0.jpg',
+            '/photo/driver/1653561288874-1.jpg',
+            '/photo/driver/20221231_132847.jpg',
+            '/photo/driver/20221231_132906.jpg',
+            '/photo/driver/20221231_133022.jpg',
+            '/photo/driver/20240831_212109.jpg',
+            '/photo/driver/20240831_212120.jpg',
+            '/photo/driver/20240831_212348.jpg',
+            '/photo/driver/20241120_090815.jpg',
+            '/photo/driver/20241123_212647.jpg',
+            '/photo/driver/20241123_212730.jpg',
+            '/photo/driver/20241123_212734.jpg',
+            '/photo/driver/20241123_212738.jpg',
+            '/photo/driver/20241123_212753.jpg',
+            '/photo/driver/20241120_090946(0).jpg',
+            '/photo/driver/P20221218_185309200_11A4CCA0-41B6-4764-852F-150E1DA068F2.JPG',
+            '/photo/driver/P20231029_104953039_2CB9438F-0380-4AB1-B4AB-5F31A31A4244.JPG',
+            '/photo/driver/P20231029_220055126_E970F584-29FB-4F21-9C84-B09C4E9BEEBE.JPG',
+            '/photo/driver/P20231030_103203053_5F1BE320-E0A9-4486-91B5-D22B94BEE0E3.JPG',
+            '/photo/driver/P20240608_232312271_31C27D1B-D9DB-41D7-AAE8-4ACB1C0BF170.JPG'
+        ]
     },
     { 
         id: 2, 
-        category: 'personal', 
-        title: '기업 임원 신변 보호', 
-        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
+        category: 'event', 
+        title: '2021패션위크 촬영경호', 
+        images: [
+            '/photo/event/20210912_124559.jpg',
+            '/photo/event/20210912_124622.jpg',
+            '/photo/event/20210912_124653.jpg',
+            '/photo/event/20210915_142811.jpg',
+            '/photo/event/20210915_142818.jpg',
+            '/photo/event/20210924_115802.jpg',
+            '/photo/event/20210927_102832.jpg',
+            '/photo/event/20211005_092133.jpg'
+        ]
     },
     { 
         id: 3, 
-        category: 'personal', 
-        title: '해외 인사 방한 경호', 
-        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
+        category: 'facility', 
+        title: '아파트 사전점검', 
+        images: [
+            '/photo/facility/20220611_075348.jpg',
+            '/photo/facility/20220709_084423.jpg',
+            '/photo/facility/20220806_091635.jpg',
+            '/photo/facility/20220808_112619.jpg',
+            '/photo/facility/20230114_151547.jpg',
+            '/photo/facility/20230127_094334.jpg',
+            '/photo/facility/20230128_093109.jpg',
+            '/photo/facility/20230128_093112.jpg',
+            '/photo/facility/20240218_123815.jpg',
+            '/photo/facility/P20220611_084755000_A8DDCB4A-026C-469F-96FB-1567EC73A65A.JPG',
+            '/photo/facility/P20230114_134934462_91F9D277-3E9D-43A2-91B4-BFEDF9789A78.JPG',
+            '/photo/facility/P20231111_142730984_46FEC373-9211-47B3-A77E-FAFD40EBE1A0.JPG',
+            '/photo/facility/P20240218_123801848_285C7EED-2B85-47D4-81DD-59B8322382AC.JPG',
+            '/photo/facility/P20240218_124016138_A00DE410-E680-4B0E-B0BB-632E313992F6.JPG'
+        ]
     },
-    
-    // 행사경호
     { 
         id: 4, 
-        category: 'event', 
-        title: '대규모 컨퍼런스 보안', 
-        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
-    },
-    { 
-        id: 5, 
-        category: 'event', 
-        title: '기업 행사 경호 서비스', 
-        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
-    },
-    { 
-        id: 6, 
-        category: 'event', 
-        title: '공연장 보안 관리', 
-        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
-    },
-    
-    // 의전경호
-    { 
-        id: 7, 
-        category: 'protocol', 
-        title: '정부 인사 의전 경호', 
-        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
-    },
-    { 
-        id: 8, 
-        category: 'protocol', 
-        title: '외교 행사 의전 서비스', 
-        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
-    },
-    
-    // 시설 보안경비
-    { 
-        id: 9, 
-        category: 'facility', 
-        title: '기업 본사 보안 관리', 
-        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
-    },
-    { 
-        id: 10, 
-        category: 'facility', 
-        title: '빌딩 통합 보안 시스템', 
-        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
-    },
-    
-    // 의전 드라이버
-    { 
-        id: 11, 
-        category: 'driver', 
-        title: 'VIP 의전 운행 서비스', 
-        images: ['/securities/right1.png', '/securities/right2.png', '/securities/left1.png'] 
-    },
-    { 
-        id: 12, 
-        category: 'driver', 
-        title: '공항 픽업/드롭 서비스', 
-        images: ['/securities/right2.png', '/securities/left1.png', '/securities/left2.png'] 
-    },
-    
-    // 발렛서비스
-    { 
-        id: 13, 
         category: 'valet', 
-        title: '프리미엄 발렛 서비스', 
-        images: ['/securities/left1.png', '/securities/left2.png', '/securities/right1.png'] 
-    },
-    { 
-        id: 14, 
-        category: 'valet', 
-        title: '행사장 발렛 운영', 
-        images: ['/securities/left2.png', '/securities/right1.png', '/securities/right2.png'] 
-    },
+        title: '발렛서비스', 
+        images: [
+            '/photo/valet/1664361613971.jpg',
+            '/photo/valet/1665127794507.jpg',
+            '/photo/valet/1670635949162.jpg',
+            '/photo/valet/1710498213179.jpg',
+            '/photo/valet/1670552186395-0.jpg',
+            '/photo/valet/1670552193154-0.jpg',
+            '/photo/valet/20221014_161550.jpg',
+            '/photo/valet/20241111_195617.jpg',
+            '/photo/valet/20241111_195633.jpg',
+            '/photo/valet/20241111_195701.jpg',
+            '/photo/valet/20241111_195807.jpg',
+            '/photo/valet/P20230319_111102776_0B75EDC5-3400-413E-9C8F-F8FA2E5728A3.JPG'
+        ]
+    }
 ]
 
 const categories = [
@@ -156,10 +144,10 @@ export default function Portfolio() {
 
     const handleAdd = () => {
         const newItem: PortfolioItem = {
-            id: Math.max(...portfolioItems.map(i => i.id)) + 1,
+            id: portfolioItems.length > 0 ? Math.max(...portfolioItems.map(i => i.id)) + 1 : 1,
             category: 'personal',
             title: '새 포트폴리오',
-            images: ['/securities/left1.png']
+            images: ['/main.png']
         }
         setEditingItem(newItem)
         setIsAddMode(true)
