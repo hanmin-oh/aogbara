@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import Footer from '../components/Footer'
 import '../styles/aog.css'
 
 const IMAGES = [
@@ -270,9 +271,9 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
                     </div>
                 </section>
 
-                {/* Section 4: Contact (left) + BARA (right) & Footer */}
-                <section className="section section-final">
-                    <div className="section-split">
+                {/* Section 4: Contact (left) + BARA (right) */}
+                <section className="section" style={{ padding: 0, flexDirection: 'column' }}>
+                    <div className="section-split" style={{ flex: 1, width: '100%', display: 'flex' }}>
                         {/* 왼쪽: Contact */}
                         <div className="split-pane split-contact">
                             <div className="split-inner">
@@ -318,11 +319,7 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
                             </div>
                         </div>
                     </div>
-                    
-                    <footer className="aog-footer">
-                        <p className="verse-text">"Commit to the LORD whatever you do, and he will establish your plans."</p>
-                        <p className="verse-ref">- Proverbs 16:3</p>
-                    </footer>
+                    <Footer />
                 </section>
             </div>
 

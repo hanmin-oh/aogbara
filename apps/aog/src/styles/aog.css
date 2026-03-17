@@ -300,10 +300,10 @@
 .hero-title img {
     width: 100%;
     height: auto;
-    max-height: 60vh; /* Reverted to 60vh */
+    max-height: 65vh; /* Increased from 60vh to 65vh */
     object-fit: contain;
     display: block;
-    transform: scale(1.25); /* Zoom in by 25% without affecting layout bounds */
+    transform: scale(1.1); /* Zoom in by 10% */
 }
 
 .hero-subtitle {
@@ -327,7 +327,7 @@
 @media (max-height: 600px) {
     .hero-title { margin-bottom: 15px; }
     .hero-subtitle { margin-bottom: 8px; }
-    .hero-title img { max-height: 50vh; transform: scale(1.15); }
+    .hero-title img { max-height: 55vh; transform: scale(1.05); }
 }
 
 .scroll-hint {
