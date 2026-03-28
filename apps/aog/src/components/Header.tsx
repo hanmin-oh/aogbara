@@ -7,8 +7,8 @@ export default function Header() {
     return (
         <>
             <header className="menu">
-                <NavLink to="/" className="brand">
-                    <img src="/logo/logo-header.svg" alt="AOG Company Logo" className="brandLogo" />
+                <NavLink to="/" className="brand" style={{ textDecoration: 'none' }}>
+                    <span style={{ fontSize: '24px', fontWeight: 900, color: '#fff', letterSpacing: '0.1em' }}>A.O.G</span>
                 </NavLink>
 
                 <nav className="nav desktop-nav">

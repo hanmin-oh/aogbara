@@ -130,7 +130,7 @@ export default function AogMain({ onOpenContact }: AogMainProps) {
             {/* Header - Only visible on first section */}
             <header className={`aog-header ${currentSection === 0 ? 'visible' : 'hidden'}`}>
                 <div className="aog-brand">
-                    <img src="/logo.png" alt="AOG" className="aog-brand-logo" />
+                    <span style={{ fontSize: '24px', fontWeight: 900, color: '#fff', letterSpacing: '0.1em' }}>A.O.G</span>
                 </div>
 
                 <nav className="aog-nav desktop-nav">
